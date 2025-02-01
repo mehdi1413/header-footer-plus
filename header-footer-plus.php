@@ -15,9 +15,8 @@ defined( 'ABSPATH' ) || exit;
  * Version: 1.0.0
  * Author: mehdi fani
  * Author URI: https://github.com/mehdi1413
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * License: GPL-3.0+
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
 
 if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
