@@ -1,0 +1,19 @@
+{
+    "name": "mehdi/header-footer-plus",
+    "description": "Wordpress header and footer plus plugin",
+    "type": "project",
+    "license": "GPL",
+    "autoload": {
+        "psr-4": {
+            "WPHFP\\Inc\\" : "./inc"
+        }
+    },
+    "authors": [
+        {
+            "name": "mehdi1413",
+            "email": "mehdifani4@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
