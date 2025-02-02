@@ -14,6 +14,9 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 global $wpdb;
 delete_option( 'hfp_plugin_options' );
 // remove all post meta data.
-$wpdb->query( "DELETE FROM {$wpdb->postmeta} WHERE meta_key LIKE '%_hfp_scripts%'" );
+delete_post_meta_by_key( '_hfp_scripts' );
 // remove all term meta data.
 $wpdb->query( "DELETE FROM {$wpdb->termmeta} WHERE meta_key LIKE '%_hfp_term_scripts%'" );
+
+// Flush Wp cache.
+wp_cache_flush();
