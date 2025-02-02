@@ -9,14 +9,14 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Plugin Name: Header Footer Plus
- * Plugin URI: https://github.com/mehdi1413
+ * Plugin URI: https://github.com/mehdi1413/header-footer-plus
  * Description:  create a simple way to add js code to individual page post or custom post type header
  * and footer, in this way it enables you to add google re-marketing code to individual pages
  * Version: 1.0.0
  * Author: mehdi fani
  * Author URI: https://github.com/mehdi1413
- * License: GPL-3.0+
- * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
