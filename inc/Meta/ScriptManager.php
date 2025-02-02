@@ -85,8 +85,22 @@ class ScriptManager {
 			$output .= $hfp_options[ $type ];
 		}
 
-		echo stripslashes( $output );
+		echo wp_kses( $output, $this->allowedHtml() );
+	}
 
+	/**
+	 * @return array[]
+	 * Select Allowed Html use in wp_kses method.
+	 */
+	private function allowedHtml(): array {
+		return [
+			'script' => [
+				'type' => []
+			],
+			'style'  => [
+				'type' => [],
+			],
+		];
 	}
 
 	/**

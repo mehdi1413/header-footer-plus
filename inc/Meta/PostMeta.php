@@ -46,7 +46,11 @@ class PostMeta extends BaseController {
 		$footer      = $data['hfp_footer'] ?? '';
 		$hide_header = isset( $data['hfp_header_hide'] ) ? esc_attr( $data['hfp_header_hide'] ) : '';
 		$hide_footer = isset( $data['hfp_footer_hide'] ) ? esc_attr( $data['hfp_footer_hide'] ) : '';
-
+		$allowed_type = [
+			'script' => [ 'type' => [] ],
+			'style'  => [ 'type' => [] ],
+		];
+		
 		return require_once( "$this->plugin_path/templates/post-meta-box.php" );
 	}
 

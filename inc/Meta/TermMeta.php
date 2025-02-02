@@ -44,7 +44,11 @@ class TermMeta extends BaseController {
 		$footer      = $data['hfp_tax_footer'] ?? '';
 		$hide_header = isset( $data['hfp_tax_header_hide'] ) ? sanitize_text_field( $data['hfp_tax_header_hide'] ) : '';
 		$hide_footer = isset( $data['hfp_tax_footer_hide'] ) ? sanitize_text_field( $data['hfp_tax_footer_hide'] ) : '';
-
+		$allowed_type = [
+			'script' => [ 'type' => [] ],
+			'style'  => [ 'type' => [] ],
+		];
+		
 		return require_once( "$this->plugin_path/templates/term-meta-box.php" );
 	}
 

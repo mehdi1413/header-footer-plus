@@ -33,7 +33,7 @@ class AdminCallbacks extends BaseController {
 		}
 
 		if ( ! empty( $header = $input['header'] ) ) {
-			$new_input['header'] = $header;
+			$new_input['header'] = $this->sanitizeTextArea( $input['header'] );
 		}
 
 		if ( ! empty( $input['fl_type'] ) ) {
@@ -41,7 +41,7 @@ class AdminCallbacks extends BaseController {
 		}
 
 		if ( ! empty( $footer = $input['footer'] ) ) {
-			$new_input['footer'] = $footer;
+			$new_input['footer'] = $this->sanitizeTextArea( $input['footer'] );
 		}
 
 		return $new_input;
@@ -63,7 +63,7 @@ class AdminCallbacks extends BaseController {
 		$data  = $this->options;
 		$value = isset( $data['header'] ) ? esc_html( $data['header'] ) : '';
 
-		echo '<textarea style="margin:0; width: 730px; height: 211px;" id="hfp_header_textarea" name="hfp_plugin_options[header]">' . $value . '</textarea>';
+		echo '<textarea style="margin:0; width: 730px; height: 211px;" id="hfp_header_textarea" name="hfp_plugin_options[header]">' . wp_kses( $value, $this->allowedHtml() ) . '</textarea>';
 	}
 
 	/**
@@ -74,7 +74,7 @@ class AdminCallbacks extends BaseController {
 		$data  = $this->options;
 		$value = isset( $data['footer'] ) ? esc_html( $data['footer'] ) : '';
 
-		echo '<textarea style="margin:0; width: 730px; height: 211px;" id="hfp_footer_textarea" name="hfp_plugin_options[footer]">' . $value . '</textarea>';
+		echo '<textarea style="margin:0; width: 730px; height: 211px;" id="hfp_footer_textarea" name="hfp_plugin_options[footer]">' . wp_kses( $value, $this->allowedHtml() ) . '</textarea>';
 	}
 
 	/**
@@ -147,4 +147,30 @@ class AdminCallbacks extends BaseController {
 
 		return $valid_values;
 	}
+
+	/**
+	 * @param $value
+	 *
+	 * @return string
+	 * Use to Clear and sanitize input scripts.
+	 */
+	private function sanitizeTextArea( $value ): string {
+		return wp_kses( $value, $this->allowedHtml() );
+	}
+
+	/**
+	 * @return array[]
+	 * Select Allowed Html use in wp_kses method.
+	 */
+	private function allowedHtml(): array {
+		return [
+			'script' => [
+				'type' => []
+			],
+			'style'  => [
+				'type' => [],
+			],
+		];
+	}
+	
 }
